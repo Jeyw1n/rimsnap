@@ -1,0 +1,25 @@
+/* Стили для навбара */
+.navbar {
+  display: flex; /* Используем flexbox для выравнивания элементов */
+  justify-content: space-between; /* Распределяем элементы по ширине */
+  align-items: center; /* Выравниваем элементы по центру по вертикали */
+  margin: 20px 16px;
+}
+
+.nav-left,
+.nav-right {
+  list-style-type: none; /* Убираем маркеры списка */
+  padding: 0; /* Убираем отступы */
+  margin: 0; /* Убираем внешние отступы */
+  display: flex; /* Используем flexbox для выравнивания элементов внутри */
+}
+
+.nav-left li,
+.nav-right li {
+  margin: 0 10px; /* Отступы между элементами */
+}
+
+.navbar a {
+  text-decoration: none; /* Убираем подчеркивание */
+  color: inherit; /* Устанавливаем цвет текста по умолчанию */
+}
