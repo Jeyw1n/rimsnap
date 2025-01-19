@@ -4,7 +4,7 @@ const Header = () => {
   var navbar = (
     <div className="navbar">
       <ul className='nav-left'>
-        <li><a href="#home">Главная</a></li>
+        <li><a href="#home" className='current'>Главная</a></li>
         <li><a href="#catalog">Каталог</a></li>
         <li><a href="#about">О нас</a></li>
       </ul>
