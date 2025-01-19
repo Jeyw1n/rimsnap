@@ -1,5 +1,6 @@
 /* Стили для навбара */
 .navbar {
+  padding: 0 10%;
   display: flex; /* Используем flexbox для выравнивания элементов */
   justify-content: space-between; /* Распределяем элементы по ширине */
   align-items: center; /* Выравниваем элементы по центру по вертикали */
@@ -22,4 +23,10 @@
 .navbar a {
   text-decoration: none; /* Убираем подчеркивание */
   color: inherit; /* Устанавливаем цвет текста по умолчанию */
+}
+
+/* Подчеркивание текущей страницы */
+.current {
+  border-bottom: 2px solid #ff8143;
+  display: inline;
 }
