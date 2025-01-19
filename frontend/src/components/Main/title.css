@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
+.title-block {
+  display: flex;
+  justify-content: center;
+  padding-top: 102px;
+  padding-bottom: 64px;
+}
+
+.title-block > img {
+  width: 400px;
+  z-index: 1;
+  padding-top: 86px;
+  padding-right: 13px;
+  filter: drop-shadow(0mm 0mm 5mm rgba(255, 149, 85, 0.54)) brightness(1.2)
+}
+
+.title-block > h1 {
+  font-family: "Jersey 15", serif;
+  text-shadow: 4px 4px 0px #ff9230;
+  position: absolute;
+  font-size: 220px;
+  margin: 0;
+  line-height: 128px;
+}
