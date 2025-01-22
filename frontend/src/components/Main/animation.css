@@ -14,7 +14,7 @@
 /* Начальное состояние для анимации справа налево */
 .fade-in-left {
   opacity: 0; /* Элемент невидим */
-  transform: translateX(40px); /* Смещение вправо */
+  transform: translateX(80px); /* Смещение вправо */
   transition: opacity 0.8s ease, transform 0.8s ease; /* Плавный переход */
 }
 

@@ -7,15 +7,12 @@ const Title = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const handleLoad = () => {
-      setVisible(true); // Устанавливаем видимость в true после загрузки страницы
-    };
+    // Устанавливаем видимость в true через 700 мс после монтирования компонента
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 200);
 
-    window.addEventListener('load', handleLoad); // Добавляем обработчик события load
-
-    return () => {
-      window.removeEventListener('load', handleLoad); // Удаляем обработчик при размонтировании
-    };
+    return () => clearTimeout(timer); // Очистка таймера при размонтировании
   }, []);
 
   return (

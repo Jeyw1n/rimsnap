@@ -15,6 +15,11 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  transition: border 0.1s ease; 
+}
+
+.menu-blocks > div:hover {
+  border: solid 2px #d6d6d6;
 }
 
 /* Стили для всех элементов внутри блока */
@@ -50,7 +55,26 @@
   text-shadow: 2px 2px 0px #06060629;
 }
 
-/* Медиа-запрос для изменения margin при ширине экрана больше 1480px */
+/* Медиа-запросы для адаптивного дизайна */
+@media (max-width: 700px) {
+  .menu-blocks {
+    flex-direction: column;
+  }
+  .title-block > img {
+    width: 220px;
+    padding-top: 70px;
+  }
+  .title-block > h1 {
+    font-size: 120px;
+  }
+}
+
+@media (max-width: 390px) {
+  .title-block > h1 {
+    font-size: 90px;
+  }
+}
+
 @media (min-width: 1480px) {
   .menu-blocks {
     margin: 0 20%;
