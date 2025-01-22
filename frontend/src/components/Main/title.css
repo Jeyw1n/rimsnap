@@ -3,8 +3,7 @@
 .title-block {
   display: flex;
   justify-content: center;
-  padding-top: 102px;
-  padding-bottom: 64px;
+  padding: 64px 0;
 }
 
 .title-block > img {
@@ -12,12 +11,12 @@
   z-index: 1;
   padding-top: 86px;
   padding-right: 13px;
-  filter: drop-shadow(0mm 0mm 5mm rgba(255, 149, 85, 0.54)) brightness(1.2)
+  filter: drop-shadow(0mm 0mm 5mm rgb(13, 13, 13)) brightness(1.2);
 }
 
 .title-block > h1 {
   font-family: "Jersey 15", serif;
-  text-shadow: 4px 4px 0px #ff9230;
+  text-shadow: 4px 4px 0px var(--accent-color);
   position: absolute;
   font-size: 220px;
   margin: 0;
