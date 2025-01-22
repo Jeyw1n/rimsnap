@@ -1,10 +1,18 @@
 /* Стили для навбара */
 .navbar {
-  padding: 0 10%;
-  display: flex; /* Используем flexbox для выравнивания элементов */
-  justify-content: space-between; /* Распределяем элементы по ширине */
-  align-items: center; /* Выравниваем элементы по центру по вертикали */
-  margin: 20px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 10%;
+  border: solid 2px #5e5e5e;
+  border-radius: 32px;
+  padding: 12px;
+}
+/* Медиа-запрос для изменения margin при ширине экрана больше 1480px */
+@media (min-width: 1480px) {
+  .navbar {
+    margin: 16px 20%;
+  }
 }
 
 .nav-left,
@@ -27,6 +35,6 @@
 
 /* Подчеркивание текущей страницы */
 .current {
-  border-bottom: 2px solid #ff8143;
+  border-bottom: 2px solid var(--accent-color);
   display: inline;
 }
