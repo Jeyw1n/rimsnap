@@ -1,7 +1,6 @@
 /* Основной контейнер для блоков меню */
 .menu-blocks {
   display: flex;
-  margin: 0 10%;
   gap: 12px;
 }
 
@@ -72,11 +71,5 @@
 @media (max-width: 390px) {
   .title-block > h1 {
     font-size: 90px;
-  }
-}
-
-@media (min-width: 1480px) {
-  .menu-blocks {
-    margin: 0 20%;
   }
 }

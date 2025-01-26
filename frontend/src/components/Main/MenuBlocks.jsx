@@ -16,7 +16,7 @@ const MenuBlocks = () => {
   }, []);
 
   return (
-    <div className={`menu-blocks ${visible ? "fade-in visible" : "fade-in"}`}>
+    <div className={`menu-blocks ${visible ? "fade-in visible" : "fade-in"} mid-block`}>
       <div
         className="menu-block-with-img"
         style={{
