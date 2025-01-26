@@ -2,7 +2,7 @@ import './header.css';
 
 const Header = () => {
   var navbar = (
-    <div className="navbar">
+    <div className={"navbar mid-block"}>
       <ul className='nav-left'>
         <li><a href="#home" className='current'>Главная</a></li>
         <li><a href="#catalog">Каталог</a></li>
