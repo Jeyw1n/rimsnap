@@ -1,0 +1,58 @@
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Минимальная ширина карточки 200px */
+  gap: 16px; /* Отступы между карточками */
+  margin-top: 32px; /* Отступ сверху для контейнера */
+}
+
+.product {
+  line-height: 12px; /* Высота строки для текста */
+  padding: 16px; /* Внутренние отступы */
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.29); /* Тень для карточки */
+  border-radius: 6px; /* Закругленные углы карточки */
+  transition: transform 0.2s; /* Плавный эффект при наведении */
+}
+
+.product:hover {
+  transform: scale(1.05); /* Увеличение карточки при наведении */
+}
+
+.product > img {
+  width: 100%; /* Изображение занимает всю ширину карточки */
+  height: auto; /* Сохраняем пропорции изображения */
+  border-radius: 8px; /* Закругленные углы изображения */
+}
+
+.product-title {
+  font-size: 1.2em; /* Размер шрифта заголовка */
+}
+
+.product-price {
+  font-size: 1em; /* Размер шрифта цены */
+  color: var(--accent-color); /* Цвет текста цены */
+}
+
+.product-tags {
+  color: gray; /* Цвет для тегов */
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+  .product-title {
+    font-size: 1.1em; /* Уменьшаем размер шрифта заголовка */
+  }
+
+  .product-price {
+    font-size: 0.9em; /* Уменьшаем размер шрифта цены */
+  }
+}
+
+@media (max-width: 480px) {
+  .product-title {
+    font-size: 1em; /* Еще меньше размер шрифта заголовка */
+  }
+
+  .product-price {
+    font-size: 0.8em; /* Еще меньше размер шрифта цены */
+  }
+}
