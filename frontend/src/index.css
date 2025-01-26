@@ -16,3 +16,16 @@
 }
 
 body {margin: 0;}
+
+/* Медиа-запрос для изменения margin при ширине экрана больше 1480px */
+.mid-block {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+@media (min-width: 1480px) {
+  .mid-block {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
