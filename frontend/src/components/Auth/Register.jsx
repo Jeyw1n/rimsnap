@@ -14,8 +14,6 @@ const Register = () => {
       alert("Пароли не совпадают!");
       return;
     }
-
-    // Здесь вы можете добавить логику для отправки данных на сервер
     console.log('Register:', { username, email, password });
   };
 
