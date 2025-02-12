@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Register from './Register';
 import Login from './Login';
+import './auth.css';
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -12,14 +13,13 @@ const Auth = () => {
   const title = isLogin ? 'Вход' : 'Регистрация'; // Определяем заголовок в зависимости от состояния
 
   return (
-    <div>
-      <h1>{title}</h1> {/* Заголовок с эффектом появления */}
-      <div>
-        <button onClick={toggleForm}>
-          {isLogin ? 'Перейти к регистрации' : 'Перейти к входу'}
-        </button>
-      </div>
+    <div className='mid-block'>
+      <h1>{title}</h1>
       {isLogin ? <Login /> : <Register />}
+      <br />
+      <span onClick={toggleForm} className='toggle-form'>
+        {isLogin ? 'Перейти к регистрации' : 'Перейти к входу'}
+      </span>
     </div>
   );
 };
