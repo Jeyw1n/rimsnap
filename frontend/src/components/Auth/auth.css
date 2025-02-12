@@ -1,0 +1,28 @@
+.toggle-form {
+  cursor: pointer;
+  color: rgb(148, 193, 255);
+}
+
+input {
+  background: #101010;
+  color: rgb(255, 255, 255);
+  border: solid 2px rgba(255, 255, 255, 0.393);
+  padding: 8px;
+  border-radius: 64px;
+}
+
+input:focus {
+  background: #282828;
+  color: rgb(255, 255, 255);
+  border: solid 2px rgb(255, 255, 255);
+  padding: 8px;
+  border-radius: 64px;
+}
+
+
+.input-block {
+  display: flex;
+  width: 380px;
+  justify-content: space-between;
+  margin: 8px;
+}
