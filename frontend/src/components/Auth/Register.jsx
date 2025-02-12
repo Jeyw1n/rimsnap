@@ -19,7 +19,7 @@ const Register = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className='input-block'>
         <label>Имя пользователя:</label><br />
         <input
           type="text"
@@ -28,7 +28,7 @@ const Register = () => {
           required
         />
       </div>
-      <div>
+      <div className='input-block'>
         <label>Email:</label><br />
         <input
           type="email"
@@ -37,7 +37,7 @@ const Register = () => {
           required
         />
       </div>
-      <div>
+      <div className='input-block'>
         <label>Пароль:</label><br />
         <input
           type="password"
@@ -46,7 +46,7 @@ const Register = () => {
           required
         />
       </div>
-      <div>
+      <div className='input-block'>
         <label>Повтор пароля:</label><br />
         <input
           type="password"

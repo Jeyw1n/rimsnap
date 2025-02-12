@@ -11,7 +11,7 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className='input-block'>
         <label>Имя пользователя:</label><br />
         <input
           type="text"
@@ -20,7 +20,7 @@ const Login = () => {
           required
         />
       </div>
-      <div>
+      <div className='input-block'>
         <label>Пароль:</label><br />
         <input
           type="password"
