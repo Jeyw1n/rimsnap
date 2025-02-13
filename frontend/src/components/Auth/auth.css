@@ -32,8 +32,9 @@ input:focus {
   background-color: var(--accent-color);
   color: white;
   font-weight: bold;
-  width: 128px;
   border-radius: 6px;
   padding: 12px;
   box-shadow: 5px 4px 11px black;
+  font-size: medium;
+  min-width: 128px;
 }
