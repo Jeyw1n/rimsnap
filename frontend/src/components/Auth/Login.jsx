@@ -29,7 +29,7 @@ const Login = () => {
           required
         />
       </div>
-      <button type="submit">Войти</button>
+      <button className="submit-button" type="submit">Войти</button>
     </form>
   );
 };

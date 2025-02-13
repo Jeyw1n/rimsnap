@@ -26,3 +26,14 @@ input:focus {
   justify-content: space-between;
   margin: 8px;
 }
+
+.submit-button {
+  border: none;
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: bold;
+  width: 128px;
+  border-radius: 6px;
+  padding: 12px;
+  box-shadow: 5px 4px 11px black;
+}
