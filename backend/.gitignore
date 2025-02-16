@@ -58,3 +58,4 @@ pytest_cache/
 *.egg-info/
 dist/
 build/
+/.gigaide/
