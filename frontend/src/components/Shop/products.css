@@ -6,8 +6,9 @@
 }
 
 .product {
-  line-height: 12px; /* Высота строки для текста */
+  line-height: 20px; /* Высота строки для текста */
   padding: 16px; /* Внутренние отступы */
+  padding-bottom: 0;
   box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.29); /* Тень для карточки */
   border-radius: 6px; /* Закругленные углы карточки */
   transition: transform 0.2s; /* Плавный эффект при наведении */
