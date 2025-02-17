@@ -39,9 +39,11 @@ const Products = () => {
 
   return (
     <div className="product-container mid-block">
+      <br />
       {productsData.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
+      <br />
     </div>
   );
 };

@@ -46,6 +46,7 @@ const LastProducts = ({ count }) => {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
+      <br />
     </div>
     
   );
