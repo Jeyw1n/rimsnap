@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ProductCard from "./Product";
 import "./products.css";
 
-function ProductCard({ product }) {
-  return (
-    <div className="product">
-      <img src={product.image} alt={product.name} />
-      <h2 className="product-title">{product.name}</h2>
-      <p>{product.description}</p>
-      <h3 className="product-price">{product.price}₽</h3>
-      <p className="product-tags">{product.tags}</p>
-    </div>
-  );
-}
 
-const Products = () => {
+const AllProducts = () => {
   const [productsData, setProductsData] = useState([]); // Состояние для хранения данных о товарах
   const [loading, setLoading] = useState(true); // Состояние для отслеживания загрузки
 
@@ -38,14 +28,18 @@ const Products = () => {
   }
 
   return (
-    <div className="product-container mid-block">
-      <br />
-      {productsData.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+    <div className=" mid-block">
+      <h1>Каталог</h1>
+      <div className="product-container">
+        
+        {productsData.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+        
+      </div>
       <br />
     </div>
   );
 };
 
-export default Products;
+export default AllProducts;
