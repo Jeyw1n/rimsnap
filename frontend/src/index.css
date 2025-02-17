@@ -29,3 +29,9 @@ body {margin: 0;}
     margin-right: 20%;
   }
 }
+
+#content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
