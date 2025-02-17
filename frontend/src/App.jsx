@@ -11,7 +11,7 @@ import ProfilePage from './pages/ProfilePage';
 function App() {
   return (
     <Router>
-      <div>
+      <div id="content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
