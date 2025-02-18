@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import './Profile.css';
+import './profile.css';
 
 const Profile = () => {
   const [nickname, setNickname] = useState('UserNickname');
@@ -36,7 +36,7 @@ const Profile = () => {
   // Блок с информацией о пользователе
   const renderProfileInfo = () => (
     <div className="profile-info">
-      <img src={avatar} alt="Avatar" className="avatar" />
+      <img src="https://static.vecteezy.com/system/resources/previews/005/129/844/large_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="Avatar" className="avatar" />
       <h2>{nickname}</h2>
       <p>Дата регистрации: {registrationDate}</p>
     </div>
@@ -101,10 +101,12 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      <h1>Профиль пользователя</h1>
+      <h1>Ваш профиль</h1>
       {renderProfileInfo()}
-      {renderProfileManagement()}
+      <br />
       {renderProfileEdit()}
+      <br />
+      {renderProfileManagement()}
     </div>
   );
 };
