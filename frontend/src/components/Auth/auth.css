@@ -34,7 +34,12 @@ input:focus {
   font-weight: bold;
   border-radius: 6px;
   padding: 12px;
-  box-shadow: 5px 4px 11px black;
+  box-shadow: 5px 4px 11px rgba(0, 0, 0, 0.4);
   font-size: medium;
   min-width: 128px;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #ffa351;
 }
