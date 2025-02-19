@@ -1,20 +1,50 @@
 import React, { useState } from 'react';
+import axios from 'axios'; // Подключаем axios для отправки запросов
+import { useNavigate } from 'react-router';
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState(''); // Состояние для ошибок
+  const navigate = useNavigate(); // Хук для навигации
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Проверка на совпадение паролей
     if (password !== confirmPassword) {
-      alert("Пароли не совпадают!");
+      setError('Пароли не совпадают!');
       return;
     }
-    console.log('Register:', { username, email, password });
+
+    try {
+      // Отправляем данные на бэкенд для регистрации
+      const registerResponse = await axios.post('http://localhost:8000/api/register/', {
+        username,
+        email,
+        password,
+      });
+
+      // Если регистрация успешна, авторизуем пользователя
+      const loginResponse = await axios.post('http://localhost:8000/api/token/', {
+        username,
+        password,
+      });
+
+      // Сохраняем токены в localStorage
+      const { access, refresh } = loginResponse.data;
+      localStorage.setItem('access_token', access);
+      localStorage.setItem('refresh_token', refresh);
+
+      // Перенаправляем пользователя на главную страницу
+      navigate('/');
+    } catch (err) {
+      // Обрабатываем ошибку
+      setError('Ошибка регистрации. Проверьте введённые данные.');
+      console.error('Ошибка регистрации:', err);
+    }
   };
 
   return (
@@ -55,6 +85,7 @@ const Register = () => {
           required
         />
       </div>
+      {error && <p style={{ color: 'red' }}>{error}</p>} {/* Отображаем ошибку, если есть */}
       <br />
       <button className="submit-button" type="submit">Зарегистрироваться</button>
     </form>

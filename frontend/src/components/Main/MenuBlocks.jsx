@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 import "./menu_blocks.css";
 import "./animation.css";
 import rimsPicture from "./rims_picture.png";
@@ -7,13 +8,16 @@ const MenuBlocks = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Устанавливаем видимость в true через 700 мс после монтирования компонента
     const timer = setTimeout(() => {
       setVisible(true);
     }, 200);
 
-    return () => clearTimeout(timer); // Очистка таймера при размонтировании
+    return () => clearTimeout(timer);
   }, []);
+
+  const handleBlockClick = () => {
+    window.location.href = "/catalog"; // Переход на страницу каталога
+  };
 
   return (
     <div className={`menu-blocks ${visible ? "fade-in visible" : "fade-in"} mid-block`}>
@@ -22,16 +26,18 @@ const MenuBlocks = () => {
         style={{
           backgroundImage: `linear-gradient(-45deg, rgba(0, 0, 0, 0.34) 0%, rgb(16, 16, 16) 60%), url(${rimsPicture})`
         }}
+        onClick={handleBlockClick} // Обработчик клика
       >
         <h3>Широкий выбор дисков</h3>
         <p>Мы предлагаем широкий ассортимент автомобильных дисков для всех типов автомобилей. Найдите идеальные диски для вашего автомобиля и подчеркните его стиль.</p>
       </div>
-      <div className="pulsating-gradient">
-        <h3>Примерьте диски с помощью AI</h3>
-        <p>Загрузите фото вашего автомобиля и выберите диски, чтобы увидеть, как они будут выглядеть на вашем авто!</p>
+      <div className="pulsating-gradient" onClick={handleBlockClick}> {/* Обработчик клика */}
+        <h3>Бесплатная установка!</h3>
+        <p>При покупке комплекта дисков — бесплатная установка! Не упустите шанс сделать свой автомобиль уникальным!</p>
       </div>
     </div>
   );
 };
+
 
 export default MenuBlocks;

@@ -16,7 +16,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/auth" element={<Authentication />} />
-          <Route path="/profile" element={<ProfilePage />} />
+
+          <Route element={<ProtectedRoute />}>
+            <Route path="/profile" element={<ProfilePage />} />
+          </Route>
         </Routes>
       </div>
     </Router>

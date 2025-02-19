@@ -3,9 +3,17 @@ import React from "react";
 const Content = () => {
   return(
     <div className={"content mid-block"}>
-      <h1>Какой-то текст!</h1>
-      <p>майонезес криветес чипсес<br /></p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <h1>Историческая справка</h1>
+      <p style={{
+        textAlign: "justify"
+      }}>Автомобильные диски имеют долгую и интересную историю, начиная с первых автомобилей в конце 19 века. Первоначально диски изготавливались из дерева, что обеспечивало легкость, но не отличалось прочностью. С развитием технологий в начале 20 века начали использовать стальные диски, которые обеспечивали большую надежность и долговечность.
+С 1960-х годов на рынке начали появляться легкосплавные диски, изготовленные из алюминия и магния. Эти диски не только уменьшили вес автомобиля, что улучшило его динамические характеристики, но и стали символом стиля и индивидуальности. Легкосплавные диски быстро завоевали популярность благодаря разнообразию дизайнов и цветов.
+Сегодня автомобильные диски продолжают эволюционировать, с использованием современных технологий и материалов, таких как углеродное волокно. Они не только служат функциональной целью, но и становятся важным элементом дизайна автомобиля, отражая стиль и предпочтения владельца.</p>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 }
