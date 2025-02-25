@@ -17,9 +17,7 @@ function App() {
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/auth" element={<Authentication />} />
 
-          <Route element={<ProtectedRoute />}>
-            <Route path="/profile" element={<ProfilePage />} />
-          </Route>
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </div>
     </Router>
