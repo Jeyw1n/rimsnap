@@ -13,7 +13,7 @@ const Home = () => {
             <Header currentPage={"home"} />
             <Title />
             <MenuBlocks />
-            <LastProducts count={5} />
+            <LastProducts count={4} />
             <Content />
             <Footer />
         </>
