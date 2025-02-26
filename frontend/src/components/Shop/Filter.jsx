@@ -8,8 +8,6 @@ const FilterComponent = ({ onFilterChange }) => {
   const [sortOrder, setSortOrder] = useState("asc");
   const [priceRange, setPriceRange] = useState({ min: "", max: "" });
 
-  const categories = ["Category 1", "Category 2", "Category 3"]; // Пример категорий
-
   const handlePriceRangeChange = (e) => {
     const { name, value } = e.target;
     setPriceRange((prev) => ({ ...prev, [name]: value }));
