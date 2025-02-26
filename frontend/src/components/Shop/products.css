@@ -20,8 +20,9 @@
 
 .product > img {
   width: 100%; /* Изображение занимает всю ширину карточки */
-  height: auto; /* Сохраняем пропорции изображения */
+  aspect-ratio: 1 / 1; 
   border-radius: 8px; /* Закругленные углы изображения */
+  object-fit: cover;
 }
 
 .product-title {
