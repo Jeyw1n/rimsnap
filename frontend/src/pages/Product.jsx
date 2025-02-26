@@ -5,14 +5,13 @@ import Footer from "../components/Footer/Footer";
 import ProductPage from "../components/Shop/ProductPage";
 
 const ProfilePage = () => {
-    return (
-        <>
-            <Header currentPage={"catalog"} />
-            <ProductPage />
-            <Footer />
-        </>
-
-    );
+  return (
+    <>
+      <Header currentPage={"catalog"} />
+      <ProductPage />
+      <Footer />
+    </>
+  );
 }
 
 export default ProfilePage;
