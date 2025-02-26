@@ -1,8 +1,12 @@
 import React from "react";
+import { useNavigate } from 'react-router';
 
 function ProductCard({ product }) {
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    alert(`ID: ${product.id}, Name: ${product.name}`);
+    navigate(`/product/${product.id}`);
+    // alert(`ID: ${product.id}, Name: ${product.name}`);
   };
 
   return (
