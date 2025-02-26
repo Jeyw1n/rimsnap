@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import "./filter.css"
 
+
 const FilterComponent = ({ onFilterChange }) => {
+
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
   const [priceRange, setPriceRange] = useState({ min: "", max: "" });
 
   const categories = ["Category 1", "Category 2", "Category 3"]; // Пример категорий
-
-  const handleCategoryChange = (category) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
-    );
-  };
 
   const handlePriceRangeChange = (e) => {
     const { name, value } = e.target;
@@ -26,15 +19,26 @@ const FilterComponent = ({ onFilterChange }) => {
     e.preventDefault();
     onFilterChange({
       searchTerm,
-      selectedCategories,
       sortOrder,
       priceRange,
     });
   };
 
+  const handleResetFilters = () => {
+    setSearchTerm("");
+    setSortOrder("asc");
+    setPriceRange({ min: "", max: "" });
+    onFilterChange({
+      searchTerm: "",
+      selectedCategories: [],
+      sortOrder: "asc",
+      priceRange: { min: "", max: "" },
+    });
+  };
+
   return (
-    <form onSubmit={handleFilterSubmit}>
-      <div>
+    <form onSubmit={handleFilterSubmit} className="filter-form">
+      <div className="filter-row">
         <label>
           Поиск:
           <input
@@ -45,22 +49,8 @@ const FilterComponent = ({ onFilterChange }) => {
         </label>
       </div>
 
-      <div>
-        <h4>Категории:</h4>
-        {categories.map((category) => (
-          <label key={category}>
-            <input
-              type="checkbox"
-              checked={selectedCategories.includes(category)}
-              onChange={() => handleCategoryChange(category)}
-            />
-            {category}
-          </label>
-        ))}
-      </div>
-
-      <div>
-        <h4>Сортировка по цене:</h4>
+      <div className="filter-row">
+        {/* <h4>Сортировка:</h4> */}
         <label>
           <input
             type="radio"
@@ -68,7 +58,7 @@ const FilterComponent = ({ onFilterChange }) => {
             checked={sortOrder === "asc"}
             onChange={() => setSortOrder("asc")}
           />
-          По возрастанию
+          Сначала дешевые
         </label>
         <label>
           <input
@@ -77,12 +67,12 @@ const FilterComponent = ({ onFilterChange }) => {
             checked={sortOrder === "desc"}
             onChange={() => setSortOrder("desc")}
           />
-          По убыванию
+          Сначала дорогие
         </label>
       </div>
 
-      <div>
-        <h4>Диапазон цены:</h4>
+      <div className="filter-row">
+        <h4>Цена:</h4>
         <label>
           От:
           <input
@@ -103,7 +93,11 @@ const FilterComponent = ({ onFilterChange }) => {
         </label>
       </div>
 
-      <button type="submit">Применить фильтры</button>
+      <div>
+        <button type="submit" className="filter-button">Применить</button>
+        <button type="button" className="filter-button" onClick={handleResetFilters}>Сбросить</button>
+      </div>
+
     </form>
   );
 };
