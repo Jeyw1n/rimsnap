@@ -3,7 +3,7 @@
   color: rgb(148, 193, 255);
 }
 
-input {
+.input-block > input {
   background: #101010;
   color: rgb(255, 255, 255);
   border: solid 2px rgba(255, 255, 255, 0.393);
@@ -11,7 +11,7 @@ input {
   border-radius: 64px;
 }
 
-input:focus {
+.input-block > input:focus {
   background: #282828;
   color: rgb(255, 255, 255);
   border: solid 2px rgb(255, 255, 255);
@@ -38,6 +38,7 @@ input:focus {
   font-size: medium;
   min-width: 128px;
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 
 .submit-button:hover {
