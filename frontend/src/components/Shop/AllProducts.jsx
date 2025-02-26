@@ -9,7 +9,6 @@ const AllProducts = () => {
   const [loading, setLoading] = useState(true); // Состояние для отслеживания загрузки
   const [filters, setFilters] = useState({ // Состояние для фильтров
     searchTerm: "",
-    selectedCategories: [],
     sortOrder: "asc",
     priceRange: { min: "", max: "" },
   });
@@ -36,12 +35,11 @@ const AllProducts = () => {
   // Фильтрация продуктов на основе фильтров
   const filteredProducts = productsData.filter((product) => {
     const matchesSearchTerm = product.name.toLowerCase().includes(filters.searchTerm.toLowerCase());
-    const matchesCategory = filters.selectedCategories.length === 0 || filters.selectedCategories.includes(product.category); // Предполагается, что у продукта есть поле category
     const matchesPriceRange = 
       (filters.priceRange.min === "" || product.price >= filters.priceRange.min) &&
       (filters.priceRange.max === "" || product.price <= filters.priceRange.max);
 
-    return matchesSearchTerm && matchesCategory && matchesPriceRange;
+    return matchesSearchTerm && matchesPriceRange;
   });
 
   // Сортировка продуктов
