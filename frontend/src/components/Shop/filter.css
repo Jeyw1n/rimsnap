@@ -3,6 +3,7 @@
   flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку, если не помещаются */
   gap: 20px; /* Отступ между элементами */
   margin-bottom: 20px; /* Отступ снизу для разделения с продуктами */
+  justify-content: space-between;
 }
 
 .filter-row {
@@ -18,11 +19,27 @@ h4 {
   margin: 0 10px 0 0; /* Убираем отступы у заголовков и добавляем отступ справа */
 }
 
-input[type="text"],
-input[type="number"] {
+.filter-row > label > input[type="text"],
+.filter-row > label > input[type="number"] {
   margin-left: 5px; /* Отступ слева для полей ввода */
+
+  padding: 5px;
+  border-radius: 7px;
 }
 
-button {
-  margin-top: 10px; /* Отступ сверху для кнопки */
+/* Кнопки на фильтрах */
+.filter-button {
+  border: none;
+  background-color: #d2d2d2;
+  color: #313131;
+  border-radius: 6px;
+  padding: 7px;
+  box-shadow: 5px 4px 11px rgba(0, 0, 0, 0.4);
+  font-size: medium;
+  transition: background-color 0.2s;
+  margin-left: 10px;
+}
+
+.filter-button:hover {
+  background-color: #ffa351;
 }
