@@ -1,0 +1,28 @@
+.filter-form {
+  display: flex;
+  flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку, если не помещаются */
+  gap: 20px; /* Отступ между элементами */
+  margin-bottom: 20px; /* Отступ снизу для разделения с продуктами */
+}
+
+.filter-row {
+  display: flex;
+  align-items: center; /* Выравнивание по центру по вертикали */
+}
+
+.filter-row label {
+  margin-right: 10px; /* Отступ между меткой и элементом */
+}
+
+h4 {
+  margin: 0 10px 0 0; /* Убираем отступы у заголовков и добавляем отступ справа */
+}
+
+input[type="text"],
+input[type="number"] {
+  margin-left: 5px; /* Отступ слева для полей ввода */
+}
+
+button {
+  margin-top: 10px; /* Отступ сверху для кнопки */
+}
