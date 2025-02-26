@@ -1,5 +1,8 @@
 .product-page {
   padding: 20px;
+  background-color: #1e1d1d;
+  border-radius: 18px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .product-images {
@@ -26,19 +29,30 @@
 .add-to-cart input {
   width: 50px;
   margin-left: 10px;
+  background: #1e1d1d;
+  color: rgb(255, 255, 255);
+  border: solid 2px rgba(255, 255, 255, 0.393);
+  padding: 12px;
+  border-radius: 6px;
+  margin-right: 10px;
 }
 
 .add-to-cart button {
-  margin-left: 20px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
   border: none;
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 12px;
+  box-shadow: 5px 4px 11px rgba(0, 0, 0, 0.4);
+  font-size: medium;
+  min-width: 128px;
+  transition: background-color 0.2s;
   cursor: pointer;
 }
 
 .add-to-cart button:hover {
-  background-color: #0056b3;
+  background-color: #ffa351;
 }
 
 .reviews-section {
@@ -52,4 +66,13 @@
 
 .review p {
   margin: 5px 0;
+}
+
+.back-button {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }

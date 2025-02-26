@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router"; // Для получения ID товара из URL
+import { useParams, useNavigate } from "react-router"; // Для получения ID товара из URL
 import axios from "axios";
 import Slider from "react-slick"; // Для слайдера изображений
 import "slick-carousel/slick/slick.css";  // стили слайдера
 import "slick-carousel/slick/slick-theme.css"; // стили слайдера
 import "./product-page.css"; // Стили для страницы товара
+
 
 const ProductPage = () => {
   const { id } = useParams(); // Получаем ID товара из URL
@@ -12,6 +13,12 @@ const ProductPage = () => {
   const [loading, setLoading] = useState(true); // Состояние для загрузки
   const [error, setError] = useState(""); // Состояние для ошибок
   const [quantity, setQuantity] = useState(1); // Количество товара для добавления в корзину
+
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate("/catalog"); // путь к каталогу
+  };
 
   // Загрузка данных о товаре
   useEffect(() => {
@@ -69,16 +76,24 @@ const ProductPage = () => {
 
   // Настройки слайдера
   const sliderSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 300,
     slidesToShow: 1,
     centerMode: true,
-    variableWidth: true
+    variableWidth: true,
+    focusOnSelect: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
   };
 
   return (
     <div className="product-page mid-block">
+      {/* Кнопка "Назад" */}
+      <button onClick={handleGoBack} className="back-button">
+        ← Назад в каталог
+      </button>
+
       {/* Слайдер с изображениями товара */}
       <div className="product-images">
         <Slider {...sliderSettings}>
@@ -94,7 +109,7 @@ const ProductPage = () => {
       <div className="product-info">
         <h1>{product.name}</h1>
         <p>{product.description}</p>
-        <p><strong>Цена:</strong> {product.price} руб.</p>
+        <p style={{fontSize: '24px'}}><strong>Цена:</strong> {product.price} руб.</p>
 
         {/* Выбор количества и кнопка "Добавить в корзину" */}
         <div className="add-to-cart">
