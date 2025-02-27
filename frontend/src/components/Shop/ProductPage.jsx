@@ -1,31 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router"; // Для получения ID товара из URL
+import React, { useEffect, useState, useRef } from "react";
+import { useParams, useNavigate } from "react-router";
 import axios from "axios";
-import Slider from "react-slick"; // Для слайдера изображений
-import "slick-carousel/slick/slick.css";  // стили слайдера
-import "slick-carousel/slick/slick-theme.css"; // стили слайдера
-import "./product-page.css"; // Стили для страницы товара
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./product-page.css";
 
 const ProductPage = () => {
-  const { id } = useParams(); // Получаем ID товара из URL
-  const [product, setProduct] = useState(null); // Состояние для данных о товаре
-  const [loading, setLoading] = useState(true); // Состояние для загрузки
-  const [error, setError] = useState(""); // Состояние для ошибок
-  const [quantity, setQuantity] = useState(1); // Количество товара для добавления в корзину
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState("");
+  const reviewsSectionRef = useRef(null); // Реф для раздела отзывов
 
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate("/catalog"); // путь к каталогу
+    navigate("/catalog");
   };
 
-  // Загрузка данных о товаре
   useEffect(() => {
-    const fetchProduct = async () => {
+    const fetchProductAndReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/products/${id}`);
-        setProduct(response.data);
+        const productResponse = await axios.get(`http://localhost:8000/api/products/${id}`);
+        setProduct(productResponse.data);
+
+        const reviewsResponse = await axios.get(`http://localhost:8000/api/products/${id}/reviews/`);
+        setReviews(reviewsResponse.data);
       } catch (err) {
         setError("Ошибка при загрузке данных о товаре");
         console.error("Ошибка:", err);
@@ -34,33 +38,43 @@ const ProductPage = () => {
       }
     };
 
-    fetchProduct();
+    fetchProductAndReviews();
   }, [id]);
 
-  // Добавление товара в корзину
-  // const handleAddToCart = async () => {
-  //   const token = localStorage.getItem("access_token");
-  //   if (!token) {
-  //     alert("Для добавления товара в корзину необходимо авторизоваться!");
-  //     return;
-  //   }
+  const handleAddReview = async () => {
+    const token = localStorage.getItem("access_token");
+    if (!token) {
+      alert("Для добавления отзыва необходимо авторизоваться!");
+      return;
+    }
 
-  //   try {
-  //     await axios.post(
-  //       "http://localhost:8000/api/cart/",
-  //       { product_id: id, quantity },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
-  //     alert("Товар успешно добавлен в корзину!");
-  //   } catch (err) {
-  //     console.error("Ошибка при добавлении товара в корзину:", err);
-  //     alert("Не удалось добавить товар в корзину.");
-  //   }
-  // };
+    if (!newReview.trim()) {
+      alert("Отзыв не может быть пустым!");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `http://localhost:8000/api/products/${id}/add-review/`,
+        { text: newReview },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setReviews([response.data, ...reviews]);
+      setNewReview("");
+
+      // Прокрутка до раздела отзывов после добавления нового отзыва
+      if (reviewsSectionRef.current) {
+        reviewsSectionRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    } catch (err) {
+      console.error("Ошибка при добавлении отзыва:", err);
+    }
+  };
 
   if (loading) {
     return <div>Загрузка...</div>;
@@ -74,7 +88,6 @@ const ProductPage = () => {
     return <div>Товар не найден.</div>;
   }
 
-  // Настройки слайдера
   const sliderSettings = {
     dots: false,
     infinite: true,
@@ -89,12 +102,10 @@ const ProductPage = () => {
 
   return (
     <div className="product-page mid-block">
-      {/* Кнопка "Назад" */}
       <button onClick={handleGoBack} className="back-button">
-        ← Назад в каталог
+        ⮨ Назад в каталог
       </button>
 
-      {/* Слайдер с изображениями товара */}
       <div className="product-images">
         <Slider {...sliderSettings}>
           {product.images.map((imageObj, index) => (
@@ -105,37 +116,61 @@ const ProductPage = () => {
         </Slider>
       </div>
 
-      {/* Информация о товаре */}
       <div className="product-info">
-        <h1>{product.name}</h1>
-        <p>{product.description}</p>
-        <p style={{fontSize: '24px'}}><strong>Цена:</strong> {product.price} руб.</p>
+        <div>
+          <h1 style={{margin: 0}}>{product.name}</h1>
+          <h3 style={{margin: 0, marginTop: "12px"}}>О товаре</h3>
+          <p style={{margin: 0, marginTop: "8px", color: "lightgray"}}>{product.description}</p>
+        </div>
+      
+        <div className="product-price-block">
+          <p style={{fontSize: '24px', margin: 0}}><strong>Цена:</strong> {product.price} руб.</p>
+          <div className="add-to-cart">
+            <label>
+              Количество:
+              <input
+                type="number"
+                value={quantity}
+                min="1"
+                onChange={(e) => setQuantity(Number(e.target.value))}
+              />
+            </label>
+            <button>Добавить в корзину</button>
+          </div>
 
-        {/* Выбор количества и кнопка "Добавить в корзину" */}
-        <div className="add-to-cart">
-          <label>
-            Количество:
-            <input
-              type="number"
-              value={quantity}
-              min="1"
-              onChange={(e) => setQuantity(Number(e.target.value))}
-            />
-          </label>
-          {/* <button onClick={handleAddToCart}>Добавить в корзину</button> */}
-          <button>Добавить в корзину</button>
         </div>
       </div>
 
-      {/* Раздел отзывов */}
-      <div className="reviews-section">
+      {localStorage.getItem("access_token") && (
+        <div className="add-review-section">
+          <h3>Оставьте отзыв</h3>
+          <textarea
+            value={newReview}
+            onChange={(e) => setNewReview(e.target.value)}
+            placeholder="Напишите ваш отзыв..."
+            rows="4"
+            className="review-textarea"
+          />
+          <button onClick={handleAddReview}>Добавить отзыв</button>
+        </div>
+      )}
+
+      <div className="reviews-section" ref={reviewsSectionRef}>
         <h2>Отзывы</h2>
-        {product.reviews > 0 ? (
-          product.reviews.map((review) => (
+        {reviews.length > 0 ? (
+          reviews.map((review) => (
             <div key={review.id} className="review">
-              <p><strong>{review.user}</strong></p>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  color: "gray"
+                }}
+              >
+                <p><strong>{review.user}</strong></p>
+                <p><em>{new Date(review.date).toLocaleDateString()}</em></p>
+              </div>
               <p>{review.text}</p>
-              <p><em>{review.date}</em></p>
             </div>
           ))
         ) : (
