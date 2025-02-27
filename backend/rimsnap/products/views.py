@@ -35,11 +35,11 @@ class AddReviewView(APIView):
         user = request.user  # Получаем текущего пользователя
 
         # Проверяем, есть ли уже отзыв от этого пользователя на этот товар
-        if Review.objects.filter(product=product, user=user).exists():
-            return Response(
-                {"error": "Вы уже оставили отзыв на этот товар."},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
+        # if Review.objects.filter(product=product, user=user).exists():
+        #     return Response(
+        #         {"error": "Вы уже оставили отзыв на этот товар."},
+        #         status=status.HTTP_400_BAD_REQUEST,
+        #     )
 
         # Создаем отзыв
         serializer = ReviewSerializer(data=request.data)
@@ -47,6 +47,7 @@ class AddReviewView(APIView):
             serializer.save(product=product, user=user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class ProductReviewsView(APIView):
     def get(self, request, product_id):
