@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, ProductImage
+from .models import Product, ProductImage, Review
 
 class ProductImageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,3 +24,10 @@ class ProductSerializer(serializers.ModelSerializer):
             request = self.context.get('request')
             return request.build_absolute_uri(first_image.image.url)
         return None
+
+class ReviewSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source='user.username')  # Показываем имя пользователя
+
+    class Meta:
+        model = Review
+        fields = ['id', 'user', 'text', 'date']
