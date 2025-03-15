@@ -26,7 +26,7 @@ const Header = ({ currentPage }) => {
 
       <ul className='nav-right'>
         {/* Ссылки пользователя */}
-        <li><Link to="/cart" className={currentPage === 'cart' ? 'current' : ''}>Корзина</Link></li>
+        {/* <li><Link to="/cart" className={currentPage === 'cart' ? 'current' : ''}>Корзина</Link></li> */}
         {isAuthenticated ? (
           <li><Link to="/profile" className={currentPage === 'profile' ? 'current' : ''}>Профиль</Link></li>
         ) : (
