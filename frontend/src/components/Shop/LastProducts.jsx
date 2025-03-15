@@ -3,7 +3,6 @@ import axios from "axios";
 import ProductCard from "./Product";
 import "./products.css";
 
-
 const LastProducts = ({ count }) => {
   const [productsData, setProductsData] = useState([]); // Состояние для хранения данных о товарах
   const [loading, setLoading] = useState(true); // Состояние для отслеживания загрузки
@@ -38,7 +37,6 @@ const LastProducts = ({ count }) => {
       </div>
       <br />
     </div>
-    
   );
 };
 

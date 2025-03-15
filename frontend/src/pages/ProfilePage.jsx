@@ -7,11 +7,10 @@ import Footer from "../components/Footer/Footer";
 const ProfilePage = () => {
     return (
         <>
-            <Header currentPage={"profile"} />
-            <Profile />
-            <Footer />
+            <Header currentPage={"profile"} /> {/* Заголовок с текущей страницей */}
+            <Profile /> {/* Компонент профиля */}
+            <Footer /> {/* Футер */}
         </>
-
     );
 }
 

@@ -7,34 +7,34 @@ import "slick-carousel/slick/slick-theme.css";
 import "./product-page.css";
 
 const ProductPage = () => {
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [reviews, setReviews] = useState([]);
-  const [newReview, setNewReview] = useState("");
+  const { id } = useParams(); // Получение параметра id из URL
+  const [product, setProduct] = useState(null); // Состояние для продукта
+  const [loading, setLoading] = useState(true); // Состояние загрузки
+  const [error, setError] = useState(""); // Состояние ошибки
+  const [quantity, setQuantity] = useState(1); // Состояние количества
+  const [reviews, setReviews] = useState([]); // Состояние отзывов
+  const [newReview, setNewReview] = useState(""); // Состояние нового отзыва
   const reviewsSectionRef = useRef(null); // Реф для раздела отзывов
 
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate("/catalog");
+    navigate("/catalog"); // Переход на страницу каталога
   };
 
   useEffect(() => {
     const fetchProductAndReviews = async () => {
       try {
         const productResponse = await axios.get(`http://localhost:8000/api/products/${id}`);
-        setProduct(productResponse.data);
+        setProduct(productResponse.data); // Установка данных продукта
 
         const reviewsResponse = await axios.get(`http://localhost:8000/api/products/${id}/reviews/`);
-        setReviews(reviewsResponse.data);
+        setReviews(reviewsResponse.data); // Установка данных отзывов
       } catch (err) {
         setError("Ошибка при загрузке данных о товаре");
         console.error("Ошибка:", err);
       } finally {
-        setLoading(false);
+        setLoading(false); // Завершение загрузки
       }
     };
 
@@ -64,7 +64,7 @@ const ProductPage = () => {
         }
       );
 
-      setReviews([response.data, ...reviews]);
+      setReviews([response.data, ...reviews]); // Добавление нового отзыва в список
       setNewReview("");
 
       // Прокрутка до раздела отзывов после добавления нового отзыва
@@ -77,15 +77,15 @@ const ProductPage = () => {
   };
 
   if (loading) {
-    return <div>Загрузка...</div>;
+    return <div>Загрузка...</div>; // Показать индикатор загрузки
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div>{error}</div>; // Показать сообщение об ошибке
   }
 
   if (!product) {
-    return <div>Товар не найден.</div>;
+    return <div>Товар не найден.</div>; // Показать сообщение, если товар не найден
   }
 
   const sliderSettings = {

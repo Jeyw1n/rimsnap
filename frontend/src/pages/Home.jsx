@@ -10,14 +10,13 @@ import LastProducts from "../components/Shop/LastProducts";
 const Home = () => {
     return (
         <>
-            <Header currentPage={"home"} />
-            <Title />
-            <MenuBlocks />
-            <LastProducts count={4} />
-            <Content />
-            <Footer />
+            <Header currentPage={"home"} /> {/* Заголовок с текущей страницей */}
+            <Title /> {/* Заголовок */}
+            <MenuBlocks /> {/* Блоки меню */}
+            <LastProducts count={4} /> {/* Последние продукты */}
+            <Content /> {/* Основной контент */}
+            <Footer /> {/* Футер */}
         </>
-
     );
 }
 

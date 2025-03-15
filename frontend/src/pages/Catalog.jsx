@@ -7,11 +7,10 @@ import Footer from "../components/Footer/Footer";
 const Catalog = () => {
     return (
         <>
-            <Header currentPage={"catalog"} />
-            <AllProducts />
-            <Footer />
+            <Header currentPage={"catalog"} /> {/* Заголовок с текущей страницей */}
+            <AllProducts /> {/* Компонент всех продуктов */}
+            <Footer /> {/* Футер */}
         </>
-
     );
 }
 

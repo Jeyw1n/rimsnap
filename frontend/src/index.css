@@ -12,7 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --accent-color: #ff9230;
+  --accent-color: #ff9230; /* Основной акцентный цвет */
 }
 
 body {margin: 0;}

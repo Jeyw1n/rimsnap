@@ -9,6 +9,7 @@ import Authentication from './pages/Authentication';
 import ProfilePage from './pages/ProfilePage';
 import Product from './pages/Product';
 import ScrollToTopButton from './components/Cherries/ScrollToTopButton';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/auth" element={<Authentication />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/about" element={<AboutUs />} />
         </Routes>
       <ScrollToTopButton />
       </div>
