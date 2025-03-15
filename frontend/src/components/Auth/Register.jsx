@@ -21,29 +21,24 @@ const Register = () => {
 
     try {
       // Отправляем данные на бэкенд для регистрации
-      const registerResponse = await axios.post('http://localhost:8000/api/register/', {
+      const registerResponse = await axios.post('http://localhost:8000/api/accounts/register/', {
         username,
         email,
         password,
       });
+      console.log('Register response:', registerResponse.data); // Log the response
 
-      // Если регистрация успешна, авторизуем пользователя
-      const loginResponse = await axios.post('http://localhost:8000/api/token/', {
-        username,
-        password,
-      });
-
-      // Сохраняем токены в localStorage
-      const { access, refresh } = loginResponse.data;
-      localStorage.setItem('access_token', access);
-      localStorage.setItem('refresh_token', refresh);
+      // Сохраняем токен в localStorage
+      const { token } = registerResponse.data;
+      localStorage.setItem('token', token);
 
       // Перенаправляем пользователя на главную страницу
       navigate('/');
     } catch (err) {
       // Обрабатываем ошибку
-      setError('Ошибка регистрации. Проверьте введённые данные.');
-      console.error('Ошибка регистрации:', err);
+      const errorMessage = err.response ? JSON.stringify(err.response.data, null, 2) : err.message;
+      setError(`Ошибка регистрации: ${errorMessage}`);
+      console.error('Ошибка регистрации:', errorMessage); // Log the error
     }
   };
 
