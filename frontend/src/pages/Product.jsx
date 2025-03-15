@@ -7,9 +7,9 @@ import ProductPage from "../components/Shop/ProductPage";
 const Product = () => {
   return (
     <>
-      <Header currentPage={"catalog"} /> {/* Заголовок с текущей страницей */}
-      <ProductPage /> {/* Компонент страницы продукта */}
-      <Footer /> {/* Футер */}
+      <Header currentPage={"catalog"} />
+      <ProductPage />
+      <Footer />
     </>
   );
 }

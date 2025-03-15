@@ -5,9 +5,9 @@ import Header from "../components/Header/Header";
 const Authentication = () => {
     return(
         <>
-            <Header /> {/* Заголовок */}
-            <Auth /> {/* Компонент аутентификации */}
-            <Footer /> {/* Футер */}
+            <Header />
+            <Auth />
+            <Footer />
         </>
     );
 }
