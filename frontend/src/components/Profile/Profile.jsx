@@ -101,12 +101,14 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      <h1>Ваш профиль</h1>
-      {renderProfileInfo()}
-      <br />
-      {renderProfileEdit()}
-      <br />
-      {renderProfileManagement()}
+      <div id='left-profile-info'>
+        {renderProfileInfo()}
+      </div>
+      <div>
+        {renderProfileEdit()}
+        <br />
+        {renderProfileManagement()}
+      </div>
     </div>
   );
 };

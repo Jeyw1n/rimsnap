@@ -4,25 +4,18 @@ import './AboutUs.css';
 
 const AboutUs = () => {
   return (
-    <div>
+    <>
       <Header /> {/* Заголовок */}
-      <div className="about-us-content">
+      <div className="about-us-content mid-block">
         <h1>О нас</h1>
         <p>Добро пожаловать в наш магазин! Мы стремимся предоставлять лучшие продукты для наших клиентов.</p>
         <p>Наш магазин был основан в 2021 году с миссией объединить качество и доступность.</p>
         <h2>Наше местоположение</h2>
         <div className="map-container">
-          <iframe
-            width="100%"
-            height="100%"
-            frameBorder="0"
-            style={{ border: 0 }}
-            src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=1600+Amphitheatre+Parkway,+Mountain+View,+CA"
-            allowFullScreen
-          ></iframe>
+          <iframe width="780" height="430" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F%20%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&t=m&z=13&ie=UTF8&iwloc=B&output=embed"></iframe>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -12,7 +12,7 @@ const Header = ({ currentPage }) => {
   const handleLogout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
-    navigate('/');
+    window.location.href = '/auth'; // Перенаправляем на страницу входа
   };
 
   return (

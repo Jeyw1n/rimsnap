@@ -36,8 +36,7 @@ const Register = () => {
       navigate('/');
     } catch (err) {
       // Обрабатываем ошибку
-      const errorMessage = err.response ? JSON.stringify(err.response.data, null, 2) : err.message;
-      setError(`Ошибка регистрации: ${errorMessage}`);
+      setError(`Такой логин или email уже занят`);
       console.error('Ошибка регистрации:', errorMessage); // Log the error
     }
   };
