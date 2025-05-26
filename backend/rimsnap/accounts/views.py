@@ -1,7 +1,8 @@
 from rest_framework import generics
-from .serializers import UserSerializer
-from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from rest_framework import status
+from .serializers import UserSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class RegisterView(generics.CreateAPIView):
@@ -11,9 +12,13 @@ class RegisterView(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
-        token, created = Token.objects.get_or_create(user=user)
+
+        # Генерируем JWT токены
+        refresh = RefreshToken.for_user(user)
+
         return Response({
-            'token': token.key,
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
             'user_id': user.pk,
             'email': user.email
-        }, status=201)
+        }, status=status.HTTP_201_CREATED)
