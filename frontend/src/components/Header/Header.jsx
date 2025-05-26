@@ -16,6 +16,8 @@ const Header = ({ currentPage }) => {
   };
 
   return (
+    <>
+    <div style={{marginTop: 72}}></div>
     <div className={"navbar mid-block"}>
       <ul className='nav-left'>
         {/* Основные ссылки */}
@@ -38,6 +40,7 @@ const Header = ({ currentPage }) => {
         ) : (<></>)}
       </ul>
     </div>
+    </>
   );
 };
 
