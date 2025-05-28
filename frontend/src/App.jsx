@@ -3,14 +3,14 @@ import {
   Route, Routes
 } from 'react-router';
 
-import Home from './pages/Home';
-import Catalog from './pages/Catalog';
-import Authentication from './pages/Authentication';
-import ProfilePage from './pages/ProfilePage';
-import Product from './pages/Product';
-import ScrollToTopButton from './components/Cherries/ScrollToTopButton';
-import AboutUs from './pages/AboutUs';
-import ProtectedRoute from './components/ProtectedRoute';
+import Home from './pages/home/HomePage.jsx';
+import Catalog from './pages/product/AllProductsPage';
+import Authentication from './pages/auth/AuthPage';
+import ProfilePage from './pages/user/ProfilePage';
+import Product from './pages/product/ProductPage';
+import ScrollToTop from './components/scroll_to_top/ScrollToTop';
+import AboutUs from './pages/about/AboutPage';
+import ProtectedRoute from './routes/ProtectedRoute';
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
 
           <Route path="/about" element={<AboutUs />} />
         </Routes>
-      <ScrollToTopButton />
+      <ScrollToTop />
       </div>
     </Router>
   );

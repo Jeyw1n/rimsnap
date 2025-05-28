@@ -1,0 +1,75 @@
+/* Основной контейнер для блоков меню */
+.menu-blocks {
+  display: flex;
+  gap: 12px;
+}
+
+/* Стили для каждого блока внутри menu-blocks */
+.menu-blocks > div {
+  border: solid 2px #5e5e5e;
+  border-radius: 16px;
+  padding: 12px;
+  text-shadow: 2px 2px 0px #00000030;
+  min-height: 128px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  transition: border 0.1s ease; 
+}
+
+.menu-blocks > div:hover {
+  border: solid 2px #d6d6d6;
+}
+
+/* Стили для всех элементов внутри блока */
+.menu-blocks > div > * {
+  margin: 5px 0;
+}
+
+/* Стили для блоков с изображением на фоне */
+.menu-block-with-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Анимация для градиента */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Класс для переливающегося градиента */
+.pulsating-gradient {
+  background: linear-gradient(270deg, rgba(255, 165, 0, 1), rgba(255, 69, 0, 1), rgba(255, 165, 0, 1));
+  background-size: 400% 400%;
+  animation: gradientAnimation 8s ease infinite;
+  text-shadow: 2px 2px 0px #06060629;
+}
+
+/* Медиа-запросы для адаптивного дизайна */
+@media (max-width: 700px) {
+  .menu-blocks {
+    flex-direction: column;
+  }
+  .title-block > img {
+    width: 220px;
+    padding-top: 70px;
+  }
+  .title-block > h1 {
+    font-size: 120px;
+  }
+}
+
+@media (max-width: 390px) {
+  .title-block > h1 {
+    font-size: 90px;
+  }
+}

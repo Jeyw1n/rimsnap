@@ -26,6 +26,9 @@ class ProductImage(models.Model):
     def __str__(self):
         return f"Image for {self.product.name}"
     
+class CartItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Review(models.Model):
     product = models.ForeignKey(Product, related_name="reviews", on_delete=models.CASCADE)

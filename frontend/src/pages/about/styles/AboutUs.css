@@ -1,0 +1,8 @@
+/* .about-us-content {
+} */
+
+.map-container {
+  width: 100%; /* Ширина контейнера карты */
+  height: 400px; /* Высота контейнера карты */
+  margin-top: 20px; /* Отступ сверху */
+}
