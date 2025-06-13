@@ -10,7 +10,7 @@ export const GetLastProducts = (count) => {
     const fetchData = async () => {
       try {
         // Запрашиваем с API "count" товаров
-        const response = await axios.get(`/api/last-products?count=${count}`);
+        const response = await axios.get(`http://localhost:8000/api/last-products?count=${count}`);
         // Записываем полученные данные
         setProducts(response.data);
       } catch (err) {

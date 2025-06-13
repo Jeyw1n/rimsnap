@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import ProductCard from "./ProductCard";
 import FilterComponent from "./Filter"; // Импортируем компонент фильтров
+import { GetAllProducts } from "../api/GetAllProducts"; // Импортируем хук
 import "../styles/product-page.css";
 
 const AllProducts = () => {
-  const [productsData, setProductsData] = useState([]); // Состояние для хранения данных о товарах
-  const [loading, setLoading] = useState(true); // Состояние для отслеживания загрузки
+  const { products } = GetAllProducts(); // Получаем продукты из хука
+  
   const [filters, setFilters] = useState({ // Состояние для фильтров
     searchTerm: "",
     sortOrder: "asc",
@@ -18,7 +18,7 @@ const AllProducts = () => {
   };
 
   // Фильтрация продуктов на основе фильтров
-  const filteredProducts = productsData.filter((product) => {
+  const filteredProducts = products.filter((product) => { // Заменяем productsData на products
     const matchesSearchTerm = product.name.toLowerCase().includes(filters.searchTerm.toLowerCase());
     const matchesPriceRange = 
       (filters.priceRange.min === "" || product.price >= filters.priceRange.min) &&
@@ -35,10 +35,6 @@ const AllProducts = () => {
       return b.price - a.price;
     }
   });
-
-  if (loading) {
-    return <div>Загрузка...</div>; // Показать индикатор загрузки
-  }
 
   return (
     <div className="mid-block">

@@ -1,5 +1,6 @@
 /* Стили для страницы продукта */
 .product-page {
+  margin-top: 20px;
   padding: 20px;
   background-color: #1e1d1d;
   border-radius: 18px;

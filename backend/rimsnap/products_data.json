@@ -1,0 +1,184 @@
+{
+  "products": [
+    {
+      "name": "BBS CH-R 19x8.5",
+      "description": "Литые диски BBS CH-R, диаметр 19\", ширина 8.5\", вылет ET35, 5x112",
+      "tags": "литые, премиум, Германия",
+      "price": 45000
+    },
+    {
+      "name": "OZ Racing Ultraleggera 18x8",
+      "description": "Легкосплавные диски OZ Racing, вес 8.2 кг, 5x114.3, ET40",
+      "tags": "легкие, спортивные, Италия",
+      "price": 32000
+    },
+    {
+      "name": "Audi OEM Rotor 20x9",
+      "description": "Оригинальные диски Audi Rotor Design, 20x9, 5x112, ET26",
+      "tags": "оригинал, премиум, Германия",
+      "price": 68000
+    },
+    {
+      "name": "Replica AMG 19x8.5",
+      "description": "Реплика AMG мультиспицевые, 19\", 5x112, ET45",
+      "tags": "реплика, мультиспиц",
+      "price": 22000
+    },
+    {
+      "name": "Enkei RPF1 17x8",
+      "description": "Кованые диски Enkei, 17x8, 5x114.3, ET35, вес 7.1 кг",
+      "tags": "кованые, легкие, Япония",
+      "price": 38000
+    },
+    {
+      "name": "BMW M Double Spoke 18x8",
+      "description": "Оригинальные диски BMW M, 18\", 5x120, ET34",
+      "tags": "оригинал, Германия, M-серия",
+      "price": 42000
+    },
+    {
+      "name": "Vossen CVT 20x10",
+      "description": "Литые диски Vossen CVT, 20x10, 5x112, ET40",
+      "tags": "премиум, США, конкав",
+      "price": 55000
+    },
+    {
+      "name": "Rotiform BLQ 19x8.5",
+      "description": "Диски Rotiform BLQ, 19\", 5x112, ET35",
+      "tags": "тюнинг, мультиспиц",
+      "price": 29000
+    },
+    {
+      "name": "Work Emotion CR Kai 18x9",
+      "description": "Японские диски Work, 18x9, 5x114.3, ET30",
+      "tags": "JDM, Япония, спортивные",
+      "price": 41000
+    },
+    {
+      "name": "Alutec Drift 17x7.5",
+      "description": "Бюджетные литые диски, 17\", 4x100, ET38",
+      "tags": "бюджет, универсальные",
+      "price": 12500
+    },
+    {
+      "name": "HRE FF01 20x9",
+      "description": "Потоковые кованые диски HRE, 20x9, 5x112, ET32",
+      "tags": "премиум, кованые, США",
+      "price": 72000
+    },
+    {
+      "name": "ATS Streetrally 16x7",
+      "description": "Классические диски ATS, 16\", 4x108, ET35",
+      "tags": "ретро, Германия",
+      "price": 18000
+    },
+    {
+      "name": "Rial Lucca 18x8",
+      "description": "Литые диски Rial, 18x8, 5x112, ET45",
+      "tags": "универсальные, Германия",
+      "price": 21000
+    },
+    {
+      "name": "Borbet LV4 19x8.5",
+      "description": "Диски Borbet LV4, 19\", 5x112, ET42",
+      "tags": "премиум, Германия",
+      "price": 34000
+    },
+    {
+      "name": "Dotz Dakar 17x7",
+      "description": "Внедорожные диски Dotz, 17\", 5x120, ET20",
+      "tags": "внедорожник, кроссовер",
+      "price": 19000
+    },
+    {
+      "name": "Fondmetal 6600 18x8",
+      "description": "Итальянские диски Fondmetal, 18x8, 5x112, ET42",
+      "tags": "Италия, спортивные",
+      "price": 25000
+    },
+    {
+      "name": "Koenig Hypergram 17x9",
+      "description": "Легкосплавные диски Koenig, 17x9, 5x114.3, ET25",
+      "tags": "легкие, трек, США",
+      "price": 28000
+    },
+    {
+      "name": "SSR Professor SP1 18x8.5",
+      "description": "Японские трехсоставные диски SSR, 18x8.5, 5x114.3, ET35",
+      "tags": "JDM, трехсоставные, премиум",
+      "price": 89000
+    },
+    {
+      "name": "TWS T66-F 18x9",
+      "description": "Кованые диски TWS, 18x9, 5x114.3, ET38, вес 7.8 кг",
+      "tags": "кованые, Япония, гоночные",
+      "price": 65000
+    },
+    {
+      "name": "WedsSport SA-10R 19x8.5",
+      "description": "Спортивные диски WedsSport, 19x8.5, 5x112, ET35",
+      "tags": "спортивные, Япония",
+      "price": 47000
+    },
+    {
+      "name": "Yokohama Advan GT 20x9",
+      "description": "Премиальные диски Yokohama, 20x9, 5x114.3, ET22",
+      "tags": "премиум, Япония, Advan",
+      "price": 58000
+    },
+    {
+      "name": "Zito ZS-05 18x8",
+      "description": "Бюджетные литые диски, 18x8, 5x112, ET45",
+      "tags": "бюджет, Германия",
+      "price": 15000
+    },
+    {
+      "name": "Fikse FM10 18x10",
+      "description": "Американские кованые диски, 18x10, 5x120, ET25",
+      "tags": "кованые, премиум, США",
+      "price": 95000
+    },
+    {
+      "name": "Japan Racing JR11 19x8.5",
+      "description": "Диски Japan Racing, 19x8.5, 5x112, ET35",
+      "tags": "реплика, мультиспиц",
+      "price": 23000
+    },
+    {
+      "name": "Momo Revenge 17x7",
+      "description": "Диски Momo, 17x7, 4x100, ET38",
+      "tags": "Италия, бюджет",
+      "price": 17000
+    },
+    {
+      "name": "Rota Grid 18x9.5",
+      "description": "Диски Rota Grid, 18x9.5, 5x114.3, ET30",
+      "tags": "реплика, конкав",
+      "price": 21000
+    },
+    {
+      "name": "Sparco Pro Corsa 17x7.5",
+      "description": "Спортивные диски Sparco, 17x7.5, 5x108, ET42",
+      "tags": "спортивные, Италия",
+      "price": 24000
+    },
+    {
+      "name": "Team Dynamics Pro Race 1.2 18x8",
+      "description": "Британские диски для трека, 18x8, 5x112, ET42",
+      "tags": "трек, легкие, Великобритания",
+      "price": 32000
+    },
+    {
+      "name": "Volk Racing TE37 18x9",
+      "description": "Легендарные японские диски, 18x9, 5x114.3, ET22",
+      "tags": "премиум, кованые, JDM",
+      "price": 110000
+    },
+    {
+      "name": "XXR 527 17x8.25",
+      "description": "Диски XXR, 17x8.25, 5x114.3, ET35",
+      "tags": "бюджет, конкав",
+      "price": 16000
+    }
+  ]
+}

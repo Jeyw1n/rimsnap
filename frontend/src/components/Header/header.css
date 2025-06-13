@@ -7,7 +7,7 @@
   border-radius: 32px;
   padding: 12px;
   position: fixed;
-  width: 85%;
+  width: 80%;
   align-self: center;
   background-color: #101010e3;
   z-index: 10;
@@ -43,4 +43,10 @@
 .current {
   border-bottom: 2px solid var(--accent-color);
   display: inline;
+}
+
+@media (min-width: 1480px) {
+  .navbar {
+    width: 60%;
+  }
 }
