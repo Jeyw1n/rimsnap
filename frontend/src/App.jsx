@@ -11,6 +11,7 @@ import Product from './pages/product/ProductPage';
 import ScrollToTop from './components/scroll_to_top/ScrollToTop';
 import AboutUs from './pages/about/AboutPage';
 import ProtectedRoute from './routes/ProtectedRoute';
+import CartPage from './pages/cart/CartPage.jsx';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
            {/* Защищенные маршруты */}
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/cart" element={<CartPage />} />
           </Route>
 
           <Route path="/about" element={<AboutUs />} />
