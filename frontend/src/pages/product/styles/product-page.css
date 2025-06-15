@@ -1,6 +1,7 @@
 /* Стили для страницы продукта */
 .product-page {
   margin-top: 20px;
+  margin-bottom: 32px;
   padding: 20px;
   background-color: #1e1d1d;
   border-radius: 18px;
@@ -35,6 +36,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: right;
+  flex-direction: column;
 }
 
 /* Стили для кнопки добавления в корзину */
@@ -95,15 +97,23 @@
 
 /* Стили для кнопки назад */
 .back-button {
-  background: none;
-  color: white;
   border: none;
   font-size: 23px;
   font-weight: bold;
   margin-bottom: 10px;
+  background: #d2d2d2;
+  color: #313131;
+  padding: 4px 9px;
+  border-radius: 32px;
+  border-radius: 32px;
 }
 
 /* Стили для секции добавления отзыва */
+.add-review-section {
+  display: flex;
+  flex-direction: column;
+}
+
 .add-review-section textarea {
   width: -webkit-fill-available;
   background: #1e1d1d;
@@ -123,6 +133,7 @@
   box-shadow: 5px 4px 11px rgba(0, 0, 0, 0.4);
   transition: background-color 0.2s;
   margin-top: 10px;
+  width: 148px;
 }
 
 .add-review-section button:hover {

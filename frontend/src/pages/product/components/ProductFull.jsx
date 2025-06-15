@@ -103,7 +103,7 @@ const ProductPage = () => {
   return (
     <div className="product-page mid-block">
       <button onClick={handleGoBack} className="back-button">
-        ⮨ Назад в каталог
+        ×
       </button>
 
       <div className="product-images">
