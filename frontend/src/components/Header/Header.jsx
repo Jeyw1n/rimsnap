@@ -28,16 +28,18 @@ const Header = ({ currentPage }) => {
 
       <ul className='nav-right'>
         {/* Ссылки пользователя */}
-        {/* <li><Link to="/cart" className={currentPage === 'cart' ? 'current' : ''}>Корзина</Link></li> */}
+        {isAuthenticated && (
+          <li><Link to="/cart" className={currentPage === 'cart' ? 'current' : ''}>Корзина</Link></li>
+        )}
+        
         {isAuthenticated ? (
-          <li><Link to="/profile" className={currentPage === 'profile' ? 'current' : ''}>Профиль</Link></li>
+          <>
+            <li><Link to="/profile" className={currentPage === 'profile' ? 'current' : ''}>Профиль</Link></li>
+            <li><Link onClick={handleLogout}>Выйти</Link></li>
+          </>
         ) : (
           <li><Link to="/auth" className={currentPage === 'auth' ? 'current' : ''}>Войти</Link></li>
         )}
-
-        {isAuthenticated ? (
-          <li><Link onClick={handleLogout}>Выйти</Link></li>
-        ) : (<></>)}
       </ul>
     </div>
     </>
