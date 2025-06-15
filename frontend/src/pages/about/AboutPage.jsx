@@ -5,7 +5,7 @@ import './styles/AboutUs.css';
 const AboutUs = () => {
   return (
     <>
-      <Header /> {/* Заголовок */}
+      <Header currentPage={"about"}/> {/* Заголовок */}
       <div className="about-us-content mid-block">
         <h1>О нас</h1>
         <p>Добро пожаловать в наш магазин! Мы стремимся предоставлять лучшие продукты для наших клиентов.</p>
