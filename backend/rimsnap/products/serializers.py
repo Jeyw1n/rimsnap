@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, ProductImage, Review
+from .models import Product, ProductImage, Review, CartItem
 
 class ProductImageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,3 +31,35 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ['id', 'user', 'text', 'date']
+
+class ProductShortSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['id', 'name', 'price']
+
+class CartItemSerializer(serializers.ModelSerializer):
+    product = ProductShortSerializer()
+    total_price = serializers.SerializerMethodField()
+
+    class Meta:
+        model = CartItem
+        fields = ['id', 'product', 'quantity', 'total_price', 'created_at']
+
+    def get_total_price(self, obj):
+        return obj.total_price
+
+class AddToCartSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartItem
+        fields = ['product', 'quantity']
+        extra_kwargs = {
+            'quantity': {'min_value': 1}
+        }
+
+class UpdateCartItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartItem
+        fields = ['quantity']
+        extra_kwargs = {
+            'quantity': {'min_value': 1}
+        }

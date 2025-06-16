@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.html import format_html
+from django.utils import timezone
 
 
 class Product(models.Model):
@@ -29,6 +30,20 @@ class ProductImage(models.Model):
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name} в корзине {self.user.username}"
+
+    @property
+    def total_price(self):
+        return self.product.price * self.quantity
+
+    class Meta:
+        ordering = ['-created_at']
+        unique_together = ['product', 'user']  # Один товар - одна запись у пользователя
 
 class Review(models.Model):
     product = models.ForeignKey(Product, related_name="reviews", on_delete=models.CASCADE)
