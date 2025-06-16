@@ -7,39 +7,75 @@ import "slick-carousel/slick/slick-theme.css";
 import "../styles/product-page.css";
 
 const ProductPage = () => {
-  const { id } = useParams(); // Получение параметра id из URL
-  const [product, setProduct] = useState(null); // Состояние для продукта
-  const [loading, setLoading] = useState(true); // Состояние загрузки
-  const [error, setError] = useState(""); // Состояние ошибки
-  const [quantity, setQuantity] = useState(1); // Состояние количества
-  const [reviews, setReviews] = useState([]); // Состояние отзывов
-  const [newReview, setNewReview] = useState(""); // Состояние нового отзыва
-  const reviewsSectionRef = useRef(null); // Реф для раздела отзывов
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState("");
+  const [cartLoading, setCartLoading] = useState(false);
+  const reviewsSectionRef = useRef(null);
 
   const navigate = useNavigate();
+  const API_URL = "http://localhost:8000/api"; // Ваш базовый URL API
 
   const handleGoBack = () => {
-    navigate("/catalog"); // Переход на страницу каталога
+    navigate("/catalog");
   };
 
   useEffect(() => {
     const fetchProductAndReviews = async () => {
       try {
-        const productResponse = await axios.get(`http://localhost:8000/api/products/${id}`);
-        setProduct(productResponse.data); // Установка данных продукта
+        const productResponse = await axios.get(`${API_URL}/products/${id}`);
+        setProduct(productResponse.data);
 
-        const reviewsResponse = await axios.get(`http://localhost:8000/api/products/${id}/reviews/`);
-        setReviews(reviewsResponse.data); // Установка данных отзывов
+        const reviewsResponse = await axios.get(`${API_URL}/products/${id}/reviews/`);
+        setReviews(reviewsResponse.data);
       } catch (err) {
         setError("Ошибка при загрузке данных о товаре");
         console.error("Ошибка:", err);
       } finally {
-        setLoading(false); // Завершение загрузки
+        setLoading(false);
       }
     };
 
     fetchProductAndReviews();
   }, [id]);
+
+  const handleAddToCart = async () => {
+    const token = localStorage.getItem("access_token");
+    if (!token) {
+      alert("Для добавления в корзину необходимо авторизоваться!");
+      navigate('/auth');
+      return;
+    }
+
+    setCartLoading(true);
+    
+    try {
+      await axios.post(
+        `${API_URL}/cart/`,
+        { 
+          product: product.id, 
+          quantity: quantity 
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      
+      alert(`Товар "${product.name}" (${quantity} шт.) добавлен в корзину!`);
+    } catch (err) {
+      console.error("Ошибка при добавлении в корзину:", err);
+      alert("Произошла ошибка при добавлении в корзину");
+    } finally {
+      setCartLoading(false);
+    }
+  };
 
   const handleAddReview = async () => {
     const token = localStorage.getItem("access_token");
@@ -55,7 +91,7 @@ const ProductPage = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/products/${id}/add-review/`,
+        `${API_URL}/products/${id}/add-review/`,
         { text: newReview },
         {
           headers: {
@@ -64,10 +100,9 @@ const ProductPage = () => {
         }
       );
 
-      setReviews([response.data, ...reviews]); // Добавление нового отзыва в список
+      setReviews([response.data, ...reviews]);
       setNewReview("");
 
-      // Прокрутка до раздела отзывов после добавления нового отзыва
       if (reviewsSectionRef.current) {
         reviewsSectionRef.current.scrollIntoView({ behavior: "smooth" });
       }
@@ -77,15 +112,15 @@ const ProductPage = () => {
   };
 
   if (loading) {
-    return <div>Загрузка...</div>; // Показать индикатор загрузки
+    return <div>Загрузка...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>; // Показать сообщение об ошибке
+    return <div>{error}</div>;
   }
 
   if (!product) {
-    return <div>Товар не найден.</div>; // Показать сообщение, если товар не найден
+    return <div>Товар не найден.</div>;
   }
 
   const sliderSettings = {
@@ -132,12 +167,17 @@ const ProductPage = () => {
                 type="number"
                 value={quantity}
                 min="1"
-                onChange={(e) => setQuantity(Number(e.target.value))}
+                onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
+                disabled={cartLoading}
               />
             </label>
-            <button>Добавить в корзину</button>
+            <button 
+              onClick={handleAddToCart}
+              disabled={cartLoading}
+            >
+              {cartLoading ? "Добавляем..." : "Добавить в корзину"}
+            </button>
           </div>
-
         </div>
       </div>
 
