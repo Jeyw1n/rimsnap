@@ -1,6 +1,6 @@
-from rest_framework import generics
-from .models import Product, Review
-from .serializers import ProductSerializer, ReviewSerializer
+from rest_framework import generics, permissions
+from .models import Product, Review, CartItem
+from .serializers import ProductSerializer, ReviewSerializer, CartItemSerializer, AddToCartSerializer, UpdateCartItemSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
@@ -55,3 +55,42 @@ class ProductReviewsView(APIView):
         reviews = Review.objects.filter(product=product)
         serializer = ReviewSerializer(reviews, many=True)
         return Response(serializer.data)
+    
+class CartItemListCreateView(generics.ListCreateAPIView):
+    serializer_class = CartItemSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return CartItem.objects.filter(user=self.request.user)
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return AddToCartSerializer
+        return CartItemSerializer
+
+    def perform_create(self, serializer):
+        product = serializer.validated_data['product']
+        quantity = serializer.validated_data.get('quantity', 1)
+        
+        # Проверяем, есть ли уже такой товар в корзине
+        cart_item, created = CartItem.objects.get_or_create(
+            user=self.request.user,
+            product=product,
+            defaults={'quantity': quantity}
+        )
+        
+        if not created:
+            cart_item.quantity += quantity
+            cart_item.save()
+
+class CartItemRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = CartItem.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_serializer_class(self):
+        if self.request.method in ['PUT', 'PATCH']:
+            return UpdateCartItemSerializer
+        return CartItemSerializer
+
+    def get_queryset(self):
+        return CartItem.objects.filter(user=self.request.user)
