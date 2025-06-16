@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './user.css';
 
 const UserProfile = () => {
-  const [nickname, setNickname] = useState('UserNickname');
+  const [nickname, setNickname] = useState('Имя пользователя');
   const [email, setEmail] = useState('user@example.com');
   const [registrationDate, setRegistrationDate] = useState('01.01.2025');
   const [avatar, setAvatar] = useState('default-avatar.png');
